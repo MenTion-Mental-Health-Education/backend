@@ -42,18 +42,13 @@ app.post('/login', async (req, res) => {
         } else {
             const accessToken = createTokens(user);
             
-            res.cookie('access-token', accessToken, {
-                maxAge: 2592000000,
-                httpOnly: true,
-            });
-            res.json('LOGGED IN');
+            res.json({ accessToken: accessToken});
         }
     });
   });
 
 
 app.get("/logout", validateToken, (req, res) => {
-    res.clearCookie('access-token');
     res.end();
 });
 

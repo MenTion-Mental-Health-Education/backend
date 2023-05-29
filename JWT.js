@@ -18,6 +18,10 @@ const validateToken = (req, res, next) => {
     try {
       const token = accessToken.split(" ")[1];
       const validToken = verify(token, process.env.JWT_SECRET);
+      const userId = validToken.id;
+      req.user = {
+        userId: userId,
+      };
       if (validToken) {
         req.authenticated = true;
         return next();

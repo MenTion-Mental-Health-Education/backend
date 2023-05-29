@@ -80,7 +80,7 @@ app.get('/forum/posts', validateToken, (req, res) => {
       });
   });
 
-// route for comment in forum
+// route for comment in post
 app.post('/forum/posts/:postId/comments', validateToken, (req, res) => {
   const { comment } = req.body;
   const userId = req.user.userId;
@@ -100,7 +100,7 @@ app.post('/forum/posts/:postId/comments', validateToken, (req, res) => {
     });
 });
 
-  // route for get all comments in forum
+  // route for get all comments in posts
 app.get('/forum/posts/:postId/comments', validateToken, (req, res) => {
   const postId = req.params.postId;
 

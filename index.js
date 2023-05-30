@@ -72,7 +72,12 @@ app.post('/forum/posts', validateToken, (req, res) => {
 
   // route for get all posts in forum
 app.get('/forum/posts', validateToken, (req, res) => {
-    Posts.findAll()
+    Posts.findAll({
+      include: {
+        model: Users,
+        attributes: ['username'],
+      },
+    })
       .then((posts) => {
         res.json(posts);
       })
@@ -106,7 +111,13 @@ app.post('/forum/posts/:postId/comments', validateToken, (req, res) => {
 app.get('/forum/posts/:postId/comments', validateToken, (req, res) => {
   const postId = req.params.postId;
 
-  Comments.findAll({ where: { postId: postId } })
+  Comments.findAll({ 
+    where: { postId: postId },
+    include: {
+      model: Users,
+      attributes: ['username'],
+    },
+   })
     .then((comments) => {
       res.json(comments);
     })

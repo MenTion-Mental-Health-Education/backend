@@ -11,9 +11,11 @@ app.use(cookieParser());
 
   // route for register
 app.post('/register', (req, res) => {
-    const {username, password, fullname, phonenumber} = req.body;
+    const {email, password, fullname, phonenumber} = req.body;
+    const username = email.split('@')[0];
     bcrypt.hash(password, 10).then((hash) => {
         Users.create({
+            email: email,
             username: username,
             password: hash,
             fullname: fullname,
@@ -32,8 +34,8 @@ app.post('/register', (req, res) => {
 
   //route for login
 app.post('/login', async (req, res) => {
-    const {username, password} = req.body;
-    const user = await Users.findOne({ where: {username: username} });
+    const {email, password} = req.body;
+    const user = await Users.findOne({ where: {email: email} });
     if (!user) res.status(400).json({ error: 'User Doesn\'t Exist'});
 
     const dbPassword = user.password;

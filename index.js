@@ -87,6 +87,33 @@ app.get('/forum/posts', validateToken, (req, res) => {
       });
   });
 
+  // route for delete post forum by postId
+  app.delete('/forum/posts/:postId', validateToken, (req, res) => {
+    const postId = req.params.postId;
+    const userId = req.user.userId;
+
+    Posts.findOne({
+      where: {
+        id: postId,
+        userId: userId,
+      },
+    })
+    .then((post) => {
+      if (!post) {
+        throw new Error('Post not found or user unauthorized'); 
+      }
+      return Promise.all([ post.destroy(), Comments.destroy({where: {postId:post.id}}),
+      ]);
+    })
+    .then(() => {
+      res.json('Post delete successfully');
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).json({error: err.message});
+    });
+  });
+
 // route for comment in post
 app.post('/forum/posts/:postId/comments', validateToken, (req, res) => {
   const { comment } = req.body;

@@ -27,8 +27,8 @@ env_variables:
   DB_USERNAME: //change yourusername
   DB_PASSWORD: //change yourpassword
   DB_HOSTNAME: //change yourhost/ip
-  DB_NAME://change yourdatabasename
-  DB_DIALECT:mysql
+  DB_NAME: //change yourdatabasename
+  DB_DIALECT: mysql
   JWT_SECRET: //change yoursecretkey
 
 automatic_scaling:

@@ -1,7 +1,7 @@
 # Backend
 ## Getting Started
 
-1. Clone Repository https://github.com/MenTion-Mental-Health-Education/backend.git
+1. Clone Repository in Vscode https://github.com/MenTion-Mental-Health-Education/backend.git
 2. Install dependensi with `npm install`
 3. Create file .env
 ```.env

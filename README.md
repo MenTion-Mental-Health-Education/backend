@@ -36,4 +36,81 @@ automatic_scaling:
   min_instances: 1
   max_instances: 5
   ```
-  12. Move project to Google Cloud and deploy on App Engine
+  12. Move project to Google Cloud and deploy on App Engine using `gcloud app deploy`
+
+
+## How to Access Our API
+### 1. Register ==>method `post`
+
+`{{yourappenginelink}}/register`
+
+JSON Body
+```
+{
+    "email": "jd@gmail.com",
+    "password": "12345",
+    "fullname": "john doe",
+    "phonenumber": "+628"
+}
+```
+### 2. Login ==>method `post`
+
+`{{yourappenginelink}}/login`
+
+JSON Body
+```
+{
+    "email": "jd@gmail.com",
+    "password": "12345"
+}
+```
+after login we get a `accessToken`
+
+### 3. Posts in Forum ==>method `post`
+
+`{{yourappenginelink}}/forum/posts`
+
+Authorization Bearer Token `Token`
+
+JSON Body
+```
+{
+    "title": "Example how to feeling better",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+```
+
+### 4. Get all Posts in Forum ==>method `get`
+
+`{{yourappenginelink}}/forum/posts`
+
+Authorization Bearer Token `Token`
+
+### 5. Delete Posts in Forum ==>method `delete`
+
+`{{yourappenginelink}}/forum/posts/{{postId}}`
+
+Authorization Bearer Token `Token`
+
+### 6. Comments in Posts ==>method `post`
+
+`{{yourappenginelink}}/forum/posts/{{postId}}/comments`
+
+Authorization Bearer Token `Token`
+
+JSON Body
+```
+{"comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"}
+```
+
+### 7. Get all Comments in Posts ==>method `get`
+
+`{{yourappenginelink}}/forum/posts/{{postId}}/comments`
+
+Authorization Bearer Token `Token`
+
+### 8. Logout ==>method `get`
+
+`{{yourappenginelink}}/logout`
+
+Authorization Bearer Token `Token`

@@ -1,4 +1,7 @@
 # Backend
+## Cloud Architecture
+![Screenshot_58](https://github.com/MenTion-Mental-Health-Education/backend/assets/125712423/7ef68842-f343-4195-9ede-9f91a7ac8179)
+
 ## Getting Started
 
 1. Clone Repository in Vscode https://github.com/MenTion-Mental-Health-Education/backend.git

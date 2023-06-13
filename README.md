@@ -23,7 +23,7 @@ DB_DIALECT=mysql
 
 JWT_SECRET=//change yoursecretkey
 ```
-5. Create database in Cloud SQL
+5. Create database in Cloud SQL (**dont forget to allow network**, usually I use **0.0.0.0/0** from internet)
 6. Save username password IP address and databasename from cloud SQL to .env
 8. Migrate database using `npx sequelize-cli db:migrate` 
 9. Change script start in package.json to `"start": "node index.js"`

@@ -7,7 +7,9 @@ List content
 - [How to Access Our API](https://github.com/MenTion-Mental-Health-Education/backend#how-to-access-our-api)
 
 ## Cloud Architecture
-![Screenshot_58](https://github.com/MenTion-Mental-Health-Education/backend/assets/125712423/7ef68842-f343-4195-9ede-9f91a7ac8179)
+
+![Screenshot_66](https://github.com/MenTion-Mental-Health-Education/backend/assets/125712423/bdd690d7-3d63-4179-b2ad-d21d918069f2)
+
 
 ## Getting Started
 

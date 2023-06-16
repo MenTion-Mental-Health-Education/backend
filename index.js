@@ -13,24 +13,33 @@ app.use(cookieParser());
 app.post('/register', (req, res) => {
     const {email, password, fullname, phonenumber} = req.body;
     const username = email.split('@')[0];
-    bcrypt.hash(password, 10).then((hash) => {
-        Users.create({
-            username: username,
-            email: email,
-            password: hash,
-            fullname: fullname,
-            phonenumber: phonenumber,
-        })
-        .then(() =>{
-            res.json('USER REGISTERED');
-        })
-        .catch((err) => {
-            if (err) {
-                res.status(400).json({error: err});
-            }
-        });
+
+    Users.findOne({ email: email})
+    .then((user) =>{
+        if(user) {
+            res.status(400).json({ error: 'Email already registered'});
+        } else {
+            bcrypt.hash(password, 10).then((hash) => {
+                Users.create({
+                    username: username,
+                    email: email,
+                    password: hash,
+                    fullname: fullname,
+                    phonenumber: phonenumber,
+                })
+                .then(() =>{
+                    res.json('USER REGISTERED');
+                })
+                .catch((err) => {
+                        res.status(400).json({error: err});
+                });
+            });
+        }
+    })
+    .catch((err) => {
+        res.status(400).json({error: err});
     });
-  });
+});
 
   //route for login
 app.post('/login', async (req, res) => {

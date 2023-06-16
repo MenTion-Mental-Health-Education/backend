@@ -14,7 +14,7 @@ app.post('/register', (req, res) => {
     const {email, password, fullname, phonenumber} = req.body;
     const username = email.split('@')[0];
 
-    Users.findOne({ email: email})
+    Users.findOne({ where: {email: email}})
     .then((user) =>{
         if(user) {
             res.status(400).json({ error: 'Email already registered'});

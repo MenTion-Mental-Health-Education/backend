@@ -15,8 +15,8 @@ app.post('/register', (req, res) => {
     const username = email.split('@')[0];
     bcrypt.hash(password, 10).then((hash) => {
         Users.create({
-            email: email,
             username: username,
+            email: email,
             password: hash,
             fullname: fullname,
             phonenumber: phonenumber,
